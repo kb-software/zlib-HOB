@@ -452,5 +452,7 @@ The job which copies:
 
 In the job `GOV1242` the Power- and the job cards are only output, if the variable `$COPYC` is zero. This is only in case of the job was called separately.
 
+```
 30.12.97  KB
 14.07.98  KB
+```
