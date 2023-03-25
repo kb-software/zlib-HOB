@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xbt-cdf-comp-3-zlib-3", "xbt-cdf-comp-3-zlib-3.vcxproj", "{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Debug|Win32.Build.0 = Debug|Win32
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Debug|x64.ActiveCfg = Debug|x64
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Debug|x64.Build.0 = Debug|x64
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Release|Win32.ActiveCfg = Release|Win32
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Release|Win32.Build.0 = Release|Win32
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Release|x64.ActiveCfg = Release|x64
+		{09CDF7AA-2DBC-49BB-8717-B05C3B9ACFA0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8E6BFCE-6CBD-45C5-8A0A-B4BA6FBC4F71}
+	EndGlobalSection
+EndGlobal
