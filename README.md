@@ -3,6 +3,7 @@
  -->
 
 # The HOB Precompiler PRECOMP
+```
         Contents
              Overview 2
          2
@@ -25,7 +26,7 @@
              2.2. Rules for Expressions 8
          10
              3.1. Job with INCLUDE and request of the system variable $COPYC: 10
-
+```
 ## Overview
         
 The **HOB Precompiler** program PRECOMP runs under OS/2 or Win32 and offers a variable method of text processing. With the help of PRECOMP you can create variable COBOL-, ASSEMBLER- or other program sources or any other text files.
@@ -51,97 +52,55 @@ Command for text output can be staggered in as many levels as you like.
 ###List of commands
         
 The following commands are recognized by PRECOMP:
-```
-%%
-Is replaced by a '%'.
-%SET
-Setting a precompiler variable
-%DEFT
-Setting a precompiler text variable
-%INT
-Output of an integer number
-%TEXT Output of a text variable
-%HEXA
-Output of a hexa constant
-%CONT
-Continuing the current line in the next line
-%TAB
-Tabulator, set to the desired column
-%INCLUDE
-Insert of another file
-%CANCEL
-Cancelling the text creation
-%VARPUSH
-Saving the current list of variables
-Not implemented.
-%VARPOP
-Repeating the last list of variables
-Not implemented.
-%DISP
-Display on console
-%ACC
-Reading the console
-%IF
-Starts creating text conditionally
-%IFT
-Output only, if condition is true
-%IFF
-Output only, if condition is false
-%IFTF
-Output, if condition is true or false
-%CEND
-CONDITION END, End of an IF condition
-%IIF
-IMMEDIATE IF, creating text conditionally in thisline
-%MACRO
-defines a macro
-%MEND
-end of macro definition
-%MEXIT
-leave macro
-%MSET
-defines a numeric variable inside a macro
-%MDEFT
-defines a text variable inside a macro
-%RPT
-repeat next part
-%RPTN
-repeat next part n times
-%REND
-end of part to be repeated
-%REXIT
-leave part to be repeated
-```
+
+`%%` Is replaced by a `%`.
+`%SET`Setting a precompiler variable
+`%DEFT` Setting a precompiler text variable
+`%INT` Output of an integer number
+`%TEXT` Output of a text variable
+`%HEXA`Output of a hexa constant
+`%CONT` Continuing the current line in the next line
+`%TAB` Tabulator, set to the desired column
+`%INCLUDE` Insert of another file
+`%CANCEL` Cancelling the text creation
+`%VARPUSH` Saving the current list of variables Not implemented.
+`%VARPOP` Repeating the last list of variables Not implemented.
+`%DISP` Display on console
+`%ACC` Reading the console
+`%IF` Starts creating text conditionally
+`%IFT` Output only, if condition is true
+`%IFF` Output only, if condition is false
+`%IFTF` Output, if condition is true or false
+`%CEND CONDITION END`, End of an IF condition
+`%IIF` IMMEDIATE IF, creating text conditionally in thisline
+`%MACRO` defines a macro
+`%MEND` end of macro definition
+`%MEXIT` leave macro
+`%MSET` defines a numeric variable inside a macro
+`%MDEFT` defines a text variable inside a macro
+`%RPT` repeat next part
+`%RPTN` repeat next part n times
+`%REND` end of part to be repeated
+`%REXIT` leave part to be repeated
 
 ### Commands for the Precompiler:
 #### SET
 
-`%SET <variable>=<expression>;` The SET command defines a precompiler variable and assigns a value. The value may be calculated as an expression. With %SET a global numeric variable is defined. Examples:
+`%SET <variable>=<expression>;` The `SET` command defines a precompiler variable and assigns a value. The value may be calculated as an expression. With `%SET` a global numeric variable is defined. Examples:
 
-```cobol
-%SET I=5;
-The variable 'I' gets the value '5'.
-%SET I1=I*I;
-```
-The variable 'I1' get the value of the product of the variables 'I' and 'I'.
+`%SET I=5;` The variable `'I'` gets the value `'5'`. `%SET I1=I*I;`
 
-You have to define the variable 'I' before.
+The variable `I1` get the value of the product of the variables `I` and `I`.
+
+You have to define the variable `I` before.
 
 #### DEFT
          
-`%DEFT <Variable>:<Text>` The command 'DEFT' defines a precompiler text variable and assigns a text to it.
-The precompiler interprets the complete text after the colon. The text may have a maximum length of 80 characters. Blancs at the end are not implemented. The text may consist of two ore more other texts. With %DEFT a global text variable is defined. EXAMPLES:
+`%DEFT <Variable>:<Text>` The command `DEFT` defines a precompiler text variable and assigns a text to it. The precompiler interprets the complete text after the colon. The text may have a maximum length of 80 characters. Blancs at the end are not implemented. The text may consist of two ore more other texts. With %DEFT a global text variable is defined. EXAMPLES:
 
-```cobol
-%DEFT TI:5-ABCD
-```
-The text variable 'TI' is defined as '5-ABCD'.
-```
-%DEFT TI:%INT:I;  %TEXT:TI;
-```
-Assumption: 'I' was initialized as '12', 'TI' was initialized as '5-ABCD'. The text variable 'TI' is initialized as '12  5-ABCD'.
+`%DEFT TI:5-ABCD` The text variable `TI` is defined as `5-ABCD`. `%DEFT TI:%INT:I;  %TEXT:TI;` Assumption: `I` was initialized as `12`, `TI` was initialized as `5-ABCD`. The text variable `TI` is initialized as `12 5-ABCD`.
 
-1.1.3. Creating text conditionally
+### Creating text conditionally
 
 The following commands control the creation of conditioned texts.
 
@@ -153,11 +112,11 @@ The following commands control the creation of conditioned texts.
 %CEND
 %IIF
 ```
-The **IF command** tests a condition: The following text will only be output, if the condition is true. At the same time a current `IF` condition is opened. The `CEND` (CONDITION END) command closes the current IF condition. The text, that follows after the `CEND` command is output in any case. After `IFF (IF FALSE)` the text will only be output, if the last IF condition is false.
+The `IF` command tests a condition: The following text will only be output, if the condition is true. At the same time a current `IF` condition is opened. The `CEND` (`CONDITION END`) command closes the current IF condition. The text, that follows after the `CEND` command is output in any case. After `IFF (IF FALSE)` the text will only be output, if the last IF condition is false.
 
 After `IFT (IF TRUE)` the text will only be output, if the last `IF` condition is `true`.
 
-After `IFTF` (IF TRUE OR FALSE) the text will always be output (resp. block other IF).
+After `IFTF` (IF TRUE OR FALSE) the text will always be output (resp. block other `IF`).
 
 `IF` conditions can extend as many levels as you like. To every `IF` a `CEND` has to be assigned.
 
@@ -167,11 +126,11 @@ The following conditions can be tested:
 
 - `DEF (VAR)`: It is considered, whether a variable is defined. The condition is true, if the variable is defined.
 - `NDF (VAR)`: It is considered, whether a variable is defined. The condition is true, if the variable is not defined.
-- `EQ (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is '0'. The specified expression is compared with Zero. The condition is true, if the expression is not '0'.
-- `GT (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is greater than '0'.
-- `GE (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is greater or equal '0'.
-- `LT (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is less than '0'.
-- `LE (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is less or equal than '0'.
+- `EQ (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is `0`. The specified expression is compared with Zero. The condition is true, if the expression is not `0`.
+- `GT (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is greater than `0`.
+- `GE (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is greater or equal `0`.
+- `LT (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is less than `0`.
+- `LE (EXPR)`: The specified expression is compared with Zero. The condition is true, if the expression is less or equal than `0`.
 
 Examples:
 
@@ -181,7 +140,7 @@ Examples:
 %CEND;
 ```
 
-The text 'THE VARIABLE I HAS THE VALUE 5' will be output, if 'I' is '5'.
+The text `'THE VARIABLE I HAS THE VALUE 5'` will be output, if `I` is `5`.
 
 ### CANCEL: Canceling the output
 
@@ -200,7 +159,7 @@ Example (Host):
 ## Commands for text output
 ### Outputting a Percent Character
 
-`%%`: The '%' character is defined as control character. Therefore outputting a `%` requires two consecutive % characters.
+`%%`: The `%` character is defined as control character. Therefore outputting a `%` requires two consecutive `%` characters.
 
 Example:
 
@@ -257,18 +216,18 @@ Output: I=1
 %TEXT(<begin>,<length>):<variable>;
 ```         
 
-With the help of the TEXT command a text variable can be inserted into the current text.
+With the help of the `TEXT` command a text variable can be inserted into the current text.
 
 A text variable can be output in a certain format. Then only a part of the text is output.
 
-The format is entered after the TEXT command in brackets. The format st consists of a text position (that means 1 `position = one`), comma and length. If no length is entered (end bracket after the comma), the length of the original length of the text is used (resp. shortened).
+The format is entered after the `TEXT` command in brackets. The format st consists of a text position (that means 1 `position = one`), comma and length. If no length is entered (end bracket after the comma), the length of the original length of the text is used (resp. shortened).
 
 If a greater length is entered, the rest is filled with blancs (on the right side).
 
 Examples:
 
-`%TEXT:TEXTVAR1;`: The text variable TEXTVAR1 is inserted in the text.
-`%TEXT(5,):TEXTVAR1;`: The text variable TEXTVAR1 is inserted from the 5  position (shortened by the positioned 1 to 4).
+`%TEXT:TEXTVAR1;`: The text variable `TEXTVAR1` is inserted in the text.
+`%TEXT(5,):TEXTVAR1;`: The text variable `TEXTVAR1` is inserted from the 5  position (shortened by the positioned 1 to 4).
 ```cobol
 %TEXT(5,2):TEXTVAR1;
      th      th
@@ -277,55 +236,55 @@ The 5 and 6 position of the text variable `TEXTVAR1` are inserted.
 
 ### HEXA output of a hexa constant
 
-`%HEXA:<Hexa-Konstante>;` : With the HEXA command a hexa constant can be inserted inthe text. The characters of the hexa constant will be entered ashalfbyte with the values 0 to 9 and A to F.
+`%HEXA:<Hexa-Konstante>;` : With the `HEXA` command a hexa constant can be inserted inthe text. The characters of the hexa constant will be entered ashalfbyte with the values 0 to 9 and A to F.
 
 Each two characters of the input will become onecharacter of the output.
 
-If PRECOMP runs of S/390, input is EBCDIC, if PRECOMPruns on PCs (OS/2 and Win32), input is ASCII / ANSI.
+If `PRECOMP` runs of S/390, input is **EBCDIC**, if **PRECOMP** runs on **PCs (OS/2 and Win32)**, input is **ASCII / ANSI**.
 
 Examples:
 
-`%HEXA:4142;`: In the text Hexa 4142 is inserted (that means ASCII AB). `%HEXA:00010203;` In the Text Hexa 00010203 is inserted. (This character is not printable).
+`%HEXA:4142;`: In the text Hexa 4142 is inserted (that means ASCII AB). `%HEXA:00010203;` In the Text Hexa `00010203` is inserted. (This character is not printable).
 
 
 
 ### Commands for console dialogues
 #### The command DISP - Display on console.
 
-`%DISP:<Text>`: Text that follows after the DISP command and the colonwill be displayed on the console. This text can also be created by theprecompiler.
+`%DISP:<Text>`: Text that follows after the `DISP` command and the colon will be displayed on the console. This text can also be created by the precompiler.
 
 Examples:
 `%DISP:ABCDE - THIS IS A CONSOLE OUTPUT`
 
-The text 'ABCDE - THIS IS A CONSOLE OUTPUT ' will bedisplayed on the system console.
+The text `'ABCDE - THIS IS A CONSOLE OUTPUT '` will be displayed on the system console.
+
 ```
 %SET I=5;
 %DISP:THIS VARIABLE HAS VALUE %INT:I;
 ```
- The text `' THIS VARIABLE HAS VALUE  5 '` will be displayed on the system console.
+The text `' THIS VARIABLE HAS VALUE  5 '` will be displayed on the system console.
          
 #### The command ACC - Input from the console.
-`%ACC: <Variable> <Format>;`  The desired variable will be read from the console. Hereby the format will be concidered. After the formatcharacter follows the number of characters to be read.
+
+`%ACC: <Variable> <Format>;`  The desired variable will be read from the console. Hereby the format will be considered. After the format character follows the number of characters to be read.
+
 The following formats are possible:
 
-* **N** - numerc
+* **N** - numeric
 * **A** - alphanumeric (Text)
 
 Examples:
 
-`%ACC:VARN1 N5;`. The console wants to have a five-character numericalinput. If the variable is to have less than 5 characters, Zeroes have to befilled left. The input must not be greater.
+`%ACC:VARN1 N5;`. The console wants to have a five-character numeric alinput. If the variable is to have less than 5 characters, Zeroes have to be filled left. The input must not be greater.
 
 `Input: 00123` - the variable `VARN1` gets the value `123`.
-`%ACC:VART1 A20;`: The maximum length of text from the console is 20characters. If the input is greater, an error message appears and the input can berepeated.
-```
-Input: --- TEST ---
-```
+`%ACC:VART1 A20;`: The maximum length of text from the console is 20characters. If the input is greater, an error message appears and the input can be repeated.
 
-The text variable `VART1` contains the text `--- TEST ---`
+`Input: --- TEST ---` The text variable `VART1` contains the text `--- TEST ---`
 
 ## Macros
 
-The HOB precompiler can process macros, that means `linesof` text that are repeatedly used can be included and parameters can be setin.
+The **HOB precompiler** can process macros, that means `linesof` text that are repeatedly used can be included and parameters can be set in.
 
 Example of a macro:
 
@@ -354,7 +313,7 @@ After the macro is left, these variables are undefined again or have the value t
 
 ## Repeated Parts
 
-The user can repeat parts multiple times by the commands RPT and RPTN.
+The user can repeat parts multiple times by the commands `RPT` and `RPTN`.
 
 In this way, loops can be build.
 
@@ -378,11 +337,11 @@ Macros and repeated parts can be nested.
 # Other Rules
 ## Variables
 
-Variable names can have any length, but only the first 8characters are used for the recognition of the variable name. Variable nameshave to begin with a character (A to Z, no special characters) or thecharacter '$' (systemvariables). The remaining characters may be digits (0 to9).
+Variable names can have any length, but only the first 8characters are used for the recognition of the variable name. Variable name shave to begin with a character (A to Z, no special characters) or the character `$` (system variables). The remaining characters may be digits (0 to9).
 
 The following variables have a special meaning:
 
-```bash
+```cobol
 $COPYC      copy count, see %INCLUDE
 $VARPC      not implemented, for future use
 $DATE       the current date, format DDMMYY
@@ -392,20 +351,17 @@ $INPFCOU    statement number in the current input file
 
 ## The Length Attribute for Variables
 
-With `L'VAR` there can be the length ot a set variable usedin an
-expression.
+With `L'VAR` there can be the length ot a set variable usedin an expression.
 
-The length of a numeric variable is the number of digitsused
-plus sign if minus.
+The length of a numeric variable is the number of digitsused plus sign if minus.
 
-The length of a text variable does not contains trailing
-blanks.
+The length of a text variable does not contains trailing blanks.
 
 Only if a text variable has been defined by `MQUOTE`,trailing blanks are part of the contents of the variable.
 
 ## Rules for Expressions
 
-Expressions (marked with EXPR) are calculated accordingto the rules of the Polish Notation (normal algebra). Any number of bracketsis allowed.
+Expressions (marked with `EXPR`) are calculated accordingto the rules of the Polish Notation (normal algebra). Any number of bracketsis allowed.
 
 Multiplication and division are preferred to addition andsubtraction, else from the left to the right.
 
@@ -419,23 +375,23 @@ I+2*J
 is 5+(2*6) = 17
 (I+2)*J
 ```
-is calculated: (5+2)*6 = 42
+is calculated: `(5+2)*6 = 42`
 ```
 14/I
 ```
-is calculated: 14/5 = 2
+is calculated: `14/5 = 2`
 ```
 14/I*J
 ```
-is calculated: (14/5)*6 = 2*6 = 12
+is calculated: `(14/5)*6 = 2*6 = 12`
 ```
 14/(I*J)
 ```
-is calculated: 14/(5*6) = 14/30 = 0
+is calculated: `14/(5*6) = 14/30 = 0`
 ```
 14/(-5)*J
 ```
-is calculated: (14/(-5))*6 = -2*6 = -12
+is calculated: `(14/(-5))*6 = -2*6 = -12`
 
 # Examples
 ## Job with INCLUDE and request of the system variable
@@ -444,7 +400,7 @@ is calculated: (14/(-5))*6 = -2*6 = -12
 The Power cards and the job cards at the beginning and atthe end may only be called, if the job runs separately. The job in theentry `SLJOB1.GOV1242`
 was defined as follows:
 
-```cobol
+```COBOL
 %IF EQ $COPYC;
 * $$ JOB JNM=GOV1242,CLASS=5
 * $$ LST DISP=H,CLASS=Z
